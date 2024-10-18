@@ -23,7 +23,7 @@ public static void main(String[] args)throws IOException//throwing an exception 
   Scanner keyboard = new Scanner(System.in);
      
  //decclarations.
-  int pNumber , holderAge, eachNonSmoker, eachSmoker;
+  int pNumber , holderAge, eachNonSmoker = 0, eachSmoker = 0;
   double holderHeight, holderWeight;
   String providerName, firstName, lastName, smokeStatus;
   
@@ -46,29 +46,50 @@ public static void main(String[] args)throws IOException//throwing an exception 
   //use a loop to process all of the contents of the file. 
      while(inputFile.hasNext())
      {
-         pNumber = inputFile.nextInt();//first. 
-         providerName = inputFile.nextLine();//second.
-         firstName = inputFile.nextLine();//third.
-         lastName = inputFile.nextLine();//fourth.
-         holderAge = inputFile.nextInt();
-         smokeStatus = inputFile.nextLine();
-         holderHeight = inputFile.nextDouble();
-         holderWeight = inputFile.nextDouble();
+      try {
+        pNumber = inputFile.nextInt(); // Read policy number
+        inputFile.nextLine(); // Consume the newline character
+        providerName = inputFile.nextLine(); // Read provider name
+        firstName = inputFile.nextLine(); // Read first name
+        lastName = inputFile.nextLine(); // Read last name
+        holderAge = inputFile.nextInt(); // Read holder age
+        inputFile.nextLine(); // Consume the newline character
+        smokeStatus = inputFile.nextLine(); // Read smoke status
+        holderHeight = inputFile.nextDouble(); // Read holder height
+        holderWeight = inputFile.nextDouble(); // Read holder weight
+        inputFile.nextLine(); // Consume the newline character
 
-
-         //here I fix the error, so I can get the last piece of information. 
-      if(inputFile.hasNext())
-         inputFile.nextLine();// clear the new line. 
-         //here I fix the error, so I can get the last piece of information. 
-      if(inputFile.hasNext())
-         inputFile.nextLine();//skip the blank line in the file. 
+ //here I fix the error. 
+    // if(inputFile.hasNext())
+      // { 
+       // inputFile.nextLine();
+   //    inputFile.nextLine();
+     //  }
          
  //here I create an instance of the policy class within the loop. 
   Policy2 instancePolicy2 = new Policy2(pNumber, holderAge, holderHeight, holderWeight, providerName, firstName, lastName, smokeStatus);
   
   //here I add all of the Policy2 object to an array list. 
   policyTwo.add(instancePolicy2); 
-         
+  
+  // Count smokers and non-smokers
+  if (smokeStatus.equalsIgnoreCase("smoker"))
+    {
+    eachSmoker++;
+    }
+  else if (smokeStatus.equalsIgnoreCase("non-smoker"))
+    {
+    eachNonSmoker++;
+    }
+    
+      } 
+      
+      catch (InputMismatchException e) 
+     {
+      System.out.println("Input mismatch error: " + e.getMessage());
+      inputFile.nextLine(); // Clear the invalid input
+     }
+    
     }//end of the loop to read all of the contents of the file. 
     
    inputFile.close();//close the file. 
@@ -84,11 +105,15 @@ public static void main(String[] args)throws IOException//throwing an exception 
   System.out.println("Policyholder's Smoking Status (smoker/non-smoker): " + policyTwo.get(index).getSmokeStatus());
   System.out.println("Policyholder's Height: " + policyTwo.get(index).getHolderHeight());
   System.out.println("Policyholder's Weight: " + policyTwo.get(index).getHolderWeight());
-   System.out.println("Policyholder's BMI: " + policyTwo.get(index).getBMI());
-  System.out.println("Policy Price: " + policyTwo.get(index).getPriceOfPolicy() + "\n");
-
+   System.out.printf("Policyholder's BMI: %.2f \n", policyTwo.get(index).getBMI());
+  System.out.printf("Policy Price: $%.2f ", policyTwo.get(index).getPriceOfPolicy());
+System.out.println("\n");
+ 
  }//end of this loop. 
  
+ //here I display the number of smokers and non smokers. 
+ System.out.println("The number of policies with a smoker is: " + eachSmoker );
+ System.out.println("The number of policies with a non-smoker is: " + eachNonSmoker);
   
   }//end of the main. 
 }//end of the program.

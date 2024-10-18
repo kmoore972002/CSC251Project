@@ -6,8 +6,6 @@ Jones
 Smoker
 65.0
 110.0
-18.30
-700.00
 
 3455
 Aetna
@@ -17,8 +15,6 @@ Lee
 Non-Smoker
 72.0
 200.0
-27.12
-675.00
 
 2450
 Met Life
@@ -28,8 +24,6 @@ Williams
 Smoker
 71.0
 300.0
-41.84
-836.74
 
 3670
 Global
@@ -39,8 +33,6 @@ Smith
 Non-Smoker
 62.0
 140.0
-25.60
-675.00
 
 1490
 Reliable 
@@ -50,8 +42,6 @@ Lewis
 Smoker
 60.0
 105.0
-20.50
-700.00
 
 3477
 State Farm
@@ -61,5 +51,3 @@ Duncan
 Smoker
 66.0
 215.0
-34.70
-700.00
