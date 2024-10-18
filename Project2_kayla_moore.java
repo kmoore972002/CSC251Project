@@ -23,7 +23,7 @@ public static void main(String[] args)throws IOException//throwing an exception 
   Scanner keyboard = new Scanner(System.in);
      
  //decclarations.
-  int pNumber , holderAge, eachNonSmoker, eachSmoker;
+  int pNumber , holderAge, eachNonSmoker = 0, eachSmoker = 0;
   double holderHeight, holderWeight;
   String providerName, firstName, lastName, smokeStatus;
   
@@ -68,6 +68,16 @@ public static void main(String[] args)throws IOException//throwing an exception 
   
   //here I add all of the Policy2 object to an array list. 
   policyTwo.add(instancePolicy2); 
+  
+  // Count smokers and non-smokers
+  if (smokeStatus.equalsIgnoreCase("smoker"))
+    {
+    eachSmoker++;
+    }
+  else if (smokeStatus.equalsIgnoreCase("non-smoker"))
+    {
+    eachNonSmoker++;
+    }
          
     }//end of the loop to read all of the contents of the file. 
     
@@ -89,6 +99,9 @@ public static void main(String[] args)throws IOException//throwing an exception 
 
  }//end of this loop. 
  
+ //here I display the number of smokers and non smokers. 
+ System.out.println("The number of policies with a smoker is: " + eachSmoker );
+ System.out.println("The number of policies with a non-smoker is: " + eachNonSmoker);
   
   }//end of the main. 
 }//end of the program.
