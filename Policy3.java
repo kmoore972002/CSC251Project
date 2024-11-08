@@ -8,6 +8,7 @@ public class Policy3
 private int pNumber; 
 private  String providerName;
 private PolicyHolder Holder; //aggregation here. 
+private static int policyCount = 0; 
 
 //no-arg constructor here. 
  public Policy3()
