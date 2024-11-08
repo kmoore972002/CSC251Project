@@ -44,6 +44,18 @@ public PolicyHolder()
   
   }
   
+   //here is a copy constuctor. 
+    public PolicyHolder(PolicyHolder Holder) 
+    {
+        this.Age = Holder.Age;
+        this.Last = Holder.Last;
+        this.First = Holder.First;
+        this.Height = Holder.Height;
+        this.Weight = Holder.Weight;
+        this.Status = Holder.Status;
+    }
+
+  
 /**
 The setAge method sets the age of the policy holder. 
 @param mutateAge will set the age.
@@ -159,6 +171,28 @@ The getHolderBMI method returns the holder's BMI.
 public double getHolderBMI()
 {
  return ( Weight * 703 ) / (Height * Height); 
+}
+
+
+ /**
+      toString method
+      @return - A string containing the policy holder information. 
+  */ 
+
+   /*
+     We make use of the String.format method to format the policy holder's info. 
+   */
+   
+public String toString() 
+{
+    return String.format("Policyholder's First Name: %s\n" +
+                         "Policyholder's Last Name: %s\n" +
+                         "Policyholder's Age: %d\n" +
+                         "Policyholder's Smoking Status (Y/N): %s\n" +
+                         "Policyholder's Height: %.2f\n" +
+                         "Policyholder's Weight: %.2f\n" +
+                         "Policyholder's BMI: %.2f",
+                         First, Last, Age, Status, Height, Weight, getHolderBMI());
 }
   
 

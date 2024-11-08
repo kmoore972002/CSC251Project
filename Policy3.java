@@ -121,4 +121,23 @@ if(Holder.getHolderBMI() > 35)
 return priceOfPolicy; 
 }
 
+
+ /**
+      toString method
+      @return - A string containing information about the policy and policy holder. 
+  */ 
+
+   /*
+     We make use of the String.format method to format the info of the policy info pertaining to the holder. 
+   */
+  public String toString() 
+{
+    return String.format("Policy Number: %d\nProvider Name: %s\n%sPolicy Price: $%.2f", 
+                         pNumber, 
+                         providerName, 
+                         Holder.toString(), 
+                         getPriceOfPolicy());
+}
+
+
 }//end of the class. 
