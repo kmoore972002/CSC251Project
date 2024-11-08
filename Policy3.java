@@ -1,50 +1,33 @@
 /*
-This is a class for project part 2, this time the class is modified
-based on the instructions from project part 2. 
+This is a class for project part 3, this time the class is modified
+based on the instructions from project part 3. 
 */
 public class Policy3
 {
 // declaring fields. 
-private int pNumber, holderAge;
-private double holderHeight, holderWeight;
-private String providerName, firstName, lastName, smokeStatus;
+private int pNumber; 
+private  String providerName;
+private PolicyHolder Holder; //aggregation here. 
 
 //no-arg constructor here. 
  public Policy3()
  {
   pNumber = 0;
-  holderAge = 0;
-  holderHeight = 0.00;
-  holderWeight = 0.00;
   providerName = "";
-  firstName = "";
-  lastName = "";
-  smokeStatus = "";
+  Holder = new PolicyHolder();
  }
  
-  /*Constructor that accepts arguments for the policy number, holder's age, holder's height
-    holder's weight, provider's name, first name, last name, and the smoke status. 
+  /*Constructor that accepts arguments for the policy number, holder, provider's name. 
     @param pNum - policy number
-    @param holderAge - holder's age
-    @param holderHeight - holder's height
-    @param holderWeight - holder's weight
     @param providerName - provider's name
-    @param lastName - holder's last name
-    @param firstName - holder's first name
-    @param smokeStatus - holder's smoke status
+    @param Holder - info on the policy holder. 
     
   */
-public Policy3 (int conPNumber, int conHolderAge, double conHolderHeight, double
-conHolderWeight, String conPName, String conFName, String conLName, String conStatus)
+public Policy3 (int pNumber, String providerName, PolicyHolder Holder )
 {
-pNumber = conPNumber;
-holderAge = conHolderAge;
-holderHeight = conHolderHeight;
-holderWeight = conHolderWeight;
-providerName = conPName;
-firstName = conFName;
-lastName = conLName;
-smokeStatus = conStatus;
+this.Holder = Holder;
+this.providerName = providerName;
+this.pNumber = pNumber;
 
 }
 
@@ -67,59 +50,6 @@ public int getPNumber()
  return pNumber;
 }
 
-/**
-The setHolderAge method sets the holder's age. 
-@param mutateHolderAge will set the holder's age.
-*/ 
- public void setHolderAge(int mutateHolderAge)
-{
-  holderAge = mutateHolderAge;
-}
-
-/**
-The getHolderAge method returns the holder's age. 
-@return the holder's age.
-*/
-public int getHolderAge()
-{
- return holderAge;
-}
-
-/**
-The setHolderHeight method sets the holder's height. 
-@param mutateHolderHeight will set the holder's height.
-*/ 
- public void setHolderHeight(double mutateHolderHeight)
-{
-  holderHeight = mutateHolderHeight;
-}
-
-/**
-The getHolderHeight method returns the holder's height. 
-@return the holder's height.
-*/
-public double getHolderHeight()
-{
- return holderHeight;
-}
-
-/**
-The setHolderWeight method sets the holder's weight. 
-@param mutateHolderWeight will set the holder's weight.
-*/ 
- public void setHolderWeight(double mutateHolderWeight)
-{
-  holderWeight = mutateHolderWeight;
-}
-
-/**
-The getHolderWeight method returns the holder's weight. 
-@return the holder's weight.
-*/
-public double getHolderWeight()
-{
- return holderWeight;
-}
 
 /**
 The setProviderName method sets the provider's name. 
@@ -140,67 +70,23 @@ public String getProviderName()
 }
 
 /**
-The setFirstName method sets the holder's first name. 
-@param mutateFirstName will set the holder's first name.
-*/ 
- public void setFirstName(String mutateFirstName)
-{
-  firstName = mutateFirstName;
-}
-
-/**
-The getFirstName method returns the holder's first name. 
-@return the holder's first name.
+The setHolder method sets the holder's info. 
+@param mutateHolder will set the holder's info.
 */
-public String getFirstName()
+ public void setHolder(PolicyHolder mutateHolder)
 {
- return firstName;
+  Holder = new PolicyHolder(mutateHolder);
 }
 
 /**
-The setLastName method sets the holder's last name. 
-@param mutateLastName will set the holder's last name.
-*/ 
- public void setLastName(String mutateLastName)
-{
-  lastName = mutateLastName;
-}
-
-/**
-The getLastName method returns the holder's last name. 
-@return the holder's last name.
+The getHolder method returns the holder's policy info. 
+@return the holder's info.
 */
-public String getLastName()
+public PolicyHolder getHolder()
 {
- return lastName;
+ return new PolicyHolder(Holder); 
 }
 
-/**
-The setSmokeStatus method sets the holder's smoke status. 
-@param mutateSmokeStatus will set the holder's smoke status.
-*/ 
- public void setSmokeStatus(String mutateSmokeStatus)
-{
-  smokeStatus = mutateSmokeStatus;
-}
-
-/**
-The getSmokeStatus method returns the holder's smoke status. 
-@return the holder's smoke status.
-*/
-public String getSmokeStatus()
-{
- return smokeStatus;
-}
-
-/**
-The getBMI method returns the holder's BMI. 
-@return the holder's BMI.
-*/
-public double getBMI()
-{
- return ( holderWeight * 703 ) / (holderHeight * holderHeight); 
-}
 
 /**
 The getPriceOfPolicy method returns the holder's policy price. 
@@ -215,21 +101,21 @@ final int BASE_FEE = 600;
 priceOfPolicy = BASE_FEE;
 
 //price if holder is over 50 years of age. 
-if( holderAge > 50)
+if( Holder.getAge() > 50)
 {
  priceOfPolicy = BASE_FEE + 75;
 }
 
 //price if holder is a smoker. 
-if(smokeStatus.equalsIgnoreCase("smoker"))
+if(Holder.getStatus().equalsIgnoreCase("smoker"))
 {
  priceOfPolicy = BASE_FEE + 100;
 }
 
 //price if the holder's BMI is over 35
-if(getBMI() > 35)
+if(Holder.getHolderBMI() > 35)
 {
- priceOfPolicy = ((getBMI() - 35)) * 20 + BASE_FEE;
+ priceOfPolicy = ((Holder.getHolderBMI() - 35)) * 20 + BASE_FEE;
 }
 
 return priceOfPolicy; 
