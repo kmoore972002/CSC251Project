@@ -16,6 +16,7 @@ private static int policyCount = 0;
   pNumber = 0;
   providerName = "";
   Holder = new PolicyHolder();
+  policyCount++;
  }
  
   /*Constructor that accepts arguments for the policy number, holder, provider's name. 
@@ -122,6 +123,16 @@ if(Holder.getHolderBMI() > 35)
 return priceOfPolicy; 
 }
 
+/**
+The getPolicyCount method returns the number of policies. 
+@return the value in the policyCount field.
+*/
+public  static int getPolicyCount()
+{
+ return policyCount;
+}
+
+
 
  /**
       toString method
@@ -133,7 +144,7 @@ return priceOfPolicy;
    */
   public String toString() 
 {
-    return String.format("Policy Number: %d\nProvider Name: %s\n%sPolicy Price: $%.2f", 
+    return String.format("Policy Number: %d\nProvider Name: %s\n%sPolicy Price: $%.2f\n", 
                          pNumber, 
                          providerName, 
                          Holder.toString(), 
