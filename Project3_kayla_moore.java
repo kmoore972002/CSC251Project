@@ -19,7 +19,7 @@ public static void main(String[] args)throws IOException//throwing an exception 
 //this is the main method. 
 {
 //decclarations.
-  int pNumber , holderAge, eachNonSmoker = 0, eachSmoker = 0, policyCount = 0;
+  int pNumber , holderAge, eachNonSmoker = 0, eachSmoker = 0, policyCount;
   double holderHeight, holderWeight;
   String providerName, firstName, lastName, smokeStatus;
   
@@ -81,9 +81,6 @@ public static void main(String[] args)throws IOException//throwing an exception 
       System.out.println("Input mismatch error: " + e.getMessage());
       inputFile.nextLine(); // Clear the invalid input
      }
-     
-   //here I get the number of policies.
-   policyCount = Policy3.getPolicyCount();
     
     }//end of the loop to read all of the contents of the file. 
     
@@ -92,21 +89,16 @@ public static void main(String[] args)throws IOException//throwing an exception 
   //here is a for loop that displays each policy holder's info.  
     for(int index = 0; index < policyThree.size(); index++)
       {
-         System.out.println(policyThree);//here I implicity call the toString method within the Policy3 Class.
+         System.out.println(policyThree.get(index));//here I implicity call the toString method within the Policy3 Class.
          System.out.println();//print a blank line between Courses for easier readability
       }//end of this loop.
       
     //here I display how many policies there are. 
-   System.out.printf("There were %d Policy objects created. ", policyCount); 
+   System.out.printf("There were %d Policy objects created. \n", Policy3.getPolicyCount()); 
       
      //here I display the number of smokers and non smokers. 
  System.out.println("The number of policies with a smoker is: " + eachSmoker );
  System.out.println("The number of policies with a non-smoker is: " + eachNonSmoker);
   
-
-         
-
-
-
  }//end of main. 
 }//end of program.
